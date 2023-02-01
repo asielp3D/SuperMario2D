@@ -31,7 +31,7 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(horizontal, 0, 0) * playerSpeed * Time.deltaTime;
+        //transform.position += new Vector3(horizontal, 0, 0) * playerSpeed * Time.deltaTime;
         if(horizontal < 0)
         {
             spriteRenderer.flipX = true;
@@ -49,5 +49,10 @@ public class PlayerControler : MonoBehaviour
             rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             anim.SetBool("IsJumping", true);
         }
+    }
+    private void FixedUpdate() 
+    {
+        rBody.velocity = new Vector2(horizontal * playerSpeed, rBody.velocity.y);
+        
     }
 }
