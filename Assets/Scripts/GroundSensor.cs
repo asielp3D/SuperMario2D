@@ -6,10 +6,16 @@ public class GroundSensor : MonoBehaviour
 {
    private PlayerControler controller;
    public bool isGrounded;
+   SFXManager sfxManager;
+   SoundManager soundManager;
+
    void Awake ()
    {
     controller = GetComponentInParent<PlayerControler>();
+    sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+    soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
    }
+
      void OnTriggerEnter2D(Collider2D other)
    {
     if (other.gameObject.layer == 3)
@@ -17,15 +23,20 @@ public class GroundSensor : MonoBehaviour
     isGrounded = true;
     controller.anim.SetBool("IsJumping" , false);
     }
+
     else if(other.gameObject.layer == 6)
     {
       Debug.Log("Goomba muerto");
+      sfxManager.GoombaDeath();
       Enemy goomba = other.gameObject.GetComponent<Enemy>();
       goomba.Die();
     }
+
     if(other.gameObject.tag == "DeadZone")
     {
       Debug.Log("Estoy muerto");
+      soundManager.StopBGM();
+      sfxManager.MarioDeath();
     }
    }
 
