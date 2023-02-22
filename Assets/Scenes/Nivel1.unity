@@ -31868,9 +31868,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1080403382}
   - component: {fileID: 1080403381}
+  - component: {fileID: 1080403383}
+  - component: {fileID: 1080403384}
   m_Layer: 0
   m_Name: Bandera
-  m_TagString: Untagged
+  m_TagString: ColisionFlag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31942,6 +31944,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1080403383
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080403380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 10.5625}
+    newSize: {x: 1.5, y: 10.5625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 10.5625}
+  m_EdgeRadius: 0
+--- !u!114 &1080403384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080403380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f64ba44d96312b48a73430d73f2adb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1081653052
 GameObject:
   m_ObjectHideFlags: 0
@@ -44211,7 +44251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445271777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100.791595, y: -5.501, z: 0}
+  m_LocalPosition: {x: 76.9, y: 3.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48585,9 +48625,11 @@ GameObject:
   - component: {fileID: 1583011505}
   - component: {fileID: 1583011507}
   - component: {fileID: 1583011506}
+  - component: {fileID: 1583011508}
+  - component: {fileID: 1583011509}
   m_Layer: 0
   m_Name: Monedas
-  m_TagString: Untagged
+  m_TagString: ColisionCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48656,7 +48698,7 @@ SpriteRenderer:
   m_Size: {x: 0.0625, y: 0.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1583011507
@@ -48679,6 +48721,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1583011508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583011504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e735cef5d0e50746bc38702cb66916d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1583011509
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583011504}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0008583069, y: 0.00329566}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.875}
+    newSize: {x: 0.0625, y: 0.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5209274, y: 0.8858123}
+  m_EdgeRadius: 0
 --- !u!1 &1584487810
 GameObject:
   m_ObjectHideFlags: 0
@@ -54935,6 +55015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goombaDeath: {fileID: 8300000, guid: 07591b4972f51d04d8311e74b6ff1b9a, type: 3}
   marioDeath: {fileID: 8300000, guid: 4c572a015c8b47d4cb7655525fa67e03, type: 3}
+  pickedCoin: {fileID: 8300000, guid: 606f5eb64e14078479d39f1a9b721b23, type: 3}
+  bandera: {fileID: 8300000, guid: 6be30bcfcd626d046b7d6cae93de1dc7, type: 3}
 --- !u!82 &1778567800
 AudioSource:
   m_ObjectHideFlags: 0

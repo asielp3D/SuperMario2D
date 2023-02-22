@@ -14,6 +14,10 @@ public class PlayerControler : MonoBehaviour
     private Rigidbody2D rBody;
     private GroundSensor sensor;
     public Animator anim;
+    private Coin coin;
+    private Flag flag;
+    SFXManager sfxManager;
+    SoundManager soundManager;
     float horizontal;
 
     // Start is called before the first frame update
@@ -21,8 +25,9 @@ public class PlayerControler : MonoBehaviour
     {
         spriteRenderer = GetComponent <SpriteRenderer>();
         rBody = GetComponent <Rigidbody2D>();
-        sensor = GameObject.Find("GroundSensor").GetComponent <GroundSensor>();
         anim = GetComponent<Animator>();
+        sensor = GameObject.Find("GroundSensor").GetComponent <GroundSensor>();
+        coin = GameObject.Find("Coin").GetComponent <Coin>();
         playerHealt = 10;
         Debug.Log(texto);
     }
@@ -55,4 +60,23 @@ public class PlayerControler : MonoBehaviour
         rBody.velocity = new Vector2(horizontal * playerSpeed, rBody.velocity.y);
         
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "ColisionCoin")
+        {
+            Debug.Log("Moneda cogida");
+            Coin coin = collision.gameObject.GetComponent<Coin>();
+            coin.Pick();
+        }
+
+        if(collision.gameObject.tag == "ColisionFlag")
+        {
+            Debug.Log("WIN");
+            Flag flag = collision.gameObject.GetComponent<Flag>();
+            flag.Touch();
+        }
+    }        
+
+    
 }
