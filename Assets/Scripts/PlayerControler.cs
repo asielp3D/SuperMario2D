@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerControler : MonoBehaviour
     SFXManager sfxManager;
     SoundManager soundManager;
     float horizontal;
+    public Text cointext;
+    int contadorMonedas;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class PlayerControler : MonoBehaviour
         coin = GameObject.Find("Coin").GetComponent <Coin>();
         playerHealt = 10;
         Debug.Log(texto);
+        contadorMonedas = 0;
     }
 
     // Update is called once per frame
@@ -68,6 +72,8 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("Moneda cogida");
             Coin coin = collision.gameObject.GetComponent<Coin>();
             coin.Pick();
+            contadorMonedas++;
+            cointext.text = "coin x" + contadorMonedas;
         }
 
         if(collision.gameObject.tag == "ColisionFlag")
