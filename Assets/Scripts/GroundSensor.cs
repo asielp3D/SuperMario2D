@@ -8,12 +8,14 @@ public class GroundSensor : MonoBehaviour
    public bool isGrounded;
    SFXManager sfxManager;
    SoundManager soundManager;
+   GameManager gameManager;
 
    void Awake ()
    {
     controller = GetComponentInParent<PlayerControler>();
     sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
     soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
    }
 
      void OnTriggerEnter2D(Collider2D other)
