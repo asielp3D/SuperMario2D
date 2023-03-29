@@ -22,6 +22,8 @@ public class PlayerControler : MonoBehaviour
     float horizontal;
     public Text cointext;
     int contadorMonedas;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +45,14 @@ public class PlayerControler : MonoBehaviour
         //transform.position += new Vector3(horizontal, 0, 0) * playerSpeed * Time.deltaTime;
         if(horizontal < 0)
         {
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             anim.SetBool("IsRunning", true);
         }
         else if(horizontal > 0)
         {
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
+            transform.rotation = Quaternion.Euler(0,  0, 0);
             anim.SetBool("IsRunning", true);
         }
         else
@@ -57,6 +61,11 @@ public class PlayerControler : MonoBehaviour
         {
             rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             anim.SetBool("IsJumping", true);
+        }
+
+         if(Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         }
     }
     private void FixedUpdate() 
@@ -82,6 +91,8 @@ public class PlayerControler : MonoBehaviour
             Flag flag = collision.gameObject.GetComponent<Flag>();
             flag.Touch();
         }
+
+       
     }        
 
     
