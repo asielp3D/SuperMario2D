@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool canShoot;
     public bool isGameOver;
+    public float powerUpDuration = 5;
+    float powerUpTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ShootPowerUp();
     }
 
     public void GameOver()
@@ -33,4 +37,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+     void ShootPowerUp()
+       {
+        if(canShoot)
+            {
+            if(powerUpTimer <= powerUpDuration)
+            {
+                powerUpTimer+= Time.deltaTime;
+            }
+            else
+            {
+                canShoot = false;
+                powerUpTimer = 0;
+            }
+        }
+       }
 }

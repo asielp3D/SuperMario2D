@@ -9,6 +9,8 @@ TagManager:
   - ColisionCoin
   - ColisionFlag
   - Bullet
+  - BordesPlataforma
+  - PowerUp
   layers:
   - Default
   - TransparentFX

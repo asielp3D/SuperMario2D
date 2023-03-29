@@ -24,6 +24,7 @@ public class PlayerControler : MonoBehaviour
     int contadorMonedas;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +33,10 @@ public class PlayerControler : MonoBehaviour
         rBody = GetComponent <Rigidbody2D>();
         anim = GetComponent<Animator>();
         sensor = GameObject.Find("GroundSensor").GetComponent <GroundSensor>();
-        coin = GameObject.Find("Coin").GetComponent <Coin>();
         playerHealt = 10;
         Debug.Log(texto);
         contadorMonedas = 0;
+        gameManager = GameObject.Find("GameManager").GetComponent <GameManager>();
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class PlayerControler : MonoBehaviour
             anim.SetBool("IsJumping", true);
         }
 
-         if(Input.GetKeyDown(KeyCode.F))
+         if(Input.GetKeyDown(KeyCode.F)&& gameManager.canShoot)
         {
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         }
@@ -85,6 +86,8 @@ public class PlayerControler : MonoBehaviour
             cointext.text = "coin x" + contadorMonedas;
         }
 
+        
+
         if(collision.gameObject.tag == "ColisionFlag")
         {
             Debug.Log("WIN");
@@ -92,7 +95,12 @@ public class PlayerControler : MonoBehaviour
             flag.Touch();
         }
 
-       
+        if(collision.gameObject.tag == "PowerUp")
+        {
+            gameManager.canShoot = true;
+            Destroy(collision.gameObject);
+        }
+      
     }        
 
     
