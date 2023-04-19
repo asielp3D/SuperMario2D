@@ -37,14 +37,9 @@ public class SpawnManager : MonoBehaviour
             Instantiate (enemyPrefabs, spawn.position, spawn.rotation);
         }*/
 
-        /*for (int i = 0; i < spawnPositions.Length; i++)
+        for (int i = 0; i < spawnPositions.Length; i++)
         {
             Instantiate(enemyPrefabs, spawnPositions[i]. position, spawnPositions[i].rotation);
-        }*/
-
-        while (true)
-        {
-            
         }
 
         enemyesToSpawn--;
